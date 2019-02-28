@@ -18,9 +18,11 @@ namespace WebBackup
         [WebMethod]
         public string GetBackup()
         {
-            BackupService backupService=new BackupService(ConfigurationManager.ConnectionStrings["Database"].ToString(),
+            //Database sizin web configinizde ki connection stringin adı
+            BackupService backupService=new BackupService(ConfigurationManager.ConnectionStrings["CONNECTION_KEYNAME"].ToString(),
                 System.AppDomain.CurrentDomain.BaseDirectory+@"Backup");
-            backupService.BackupDatabase("FwEmpty");
+            //
+            backupService.BackupDatabase("DATABASE_NAME");
             return "Backup is Done";
         }
     }
